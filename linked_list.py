@@ -48,10 +48,6 @@ class LinkedList:
         prev.next = temp.next
         temp = None
 
-        
-
-
-
     def display(self) -> str:
         temp = self.head
         while(temp):
