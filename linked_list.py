@@ -48,6 +48,29 @@ class LinkedList:
         prev.next = temp.next
         temp = None
 
+    def delele_pos(self, position):
+        temp = self.head
+        if temp is not None:
+            if position == 0:
+                self.head = temp.next
+                temp = None
+                return
+
+        """Find prev_node"""
+        for i in range(position-1):
+            temp = temp.next
+            if temp is None:
+                break
+
+        if ((temp is None) or (temp.next is None)):
+            return 
+
+        next = temp.next.next
+
+        temp.next = None
+        temp.next = next
+        
+
     def display(self) -> str:
         temp = self.head
         while(temp):
@@ -69,4 +92,5 @@ if __name__ == "__main__":
     print("\n")
     ll.append(99)
     ll.delete(12)
+    ll.delele_pos(2)
     print(ll.display())
