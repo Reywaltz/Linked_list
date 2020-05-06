@@ -27,6 +27,31 @@ class LinkedList:
                 temp = temp.next
             temp.next = new_node
 
+    def delete(self, data) -> None:
+        temp = self.head
+        """If given data is in first position"""
+        if temp is not None:
+            if temp.data == data:
+                self.head = temp.next
+                temp = None
+                return
+
+        while(temp is not None):
+            if temp.data == data:
+                break
+            prev = temp
+            temp = temp.next
+
+        if temp == None:
+            return
+
+        prev.next = temp.next
+        temp = None
+
+        
+
+
+
     def display(self) -> str:
         temp = self.head
         while(temp):
@@ -38,16 +63,14 @@ class LinkedList:
 if __name__ == "__main__":
     ll = LinkedList()
     ll.head = Node(15)
-    print(ll.head)
     sec = Node(67252)
     third = Node(631)
     ll.head.next = sec
     sec.next = third
     ll.push(0)
-    print(ll.head)
     ll.ins_pos(third, 12)
     ll.display()
     print("\n")
     ll.append(99)
+    ll.delete(12)
     print(ll.display())
-    print(ll.head)
